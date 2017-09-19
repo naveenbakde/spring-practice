@@ -17,15 +17,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping(value="create", method = RequestMethod.POST)
+
+	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		log.info("***** create user called *****");
-		ResponseEntity<User> responseEntity = new ResponseEntity<User>(userService.createUser(user), HttpStatus.OK);
+		ResponseEntity<User> responseEntity = new ResponseEntity<User>(
+				userService.createUser(User.builder().first_name(user.getFirst_name()).last_name(user.getLast_name())
+						.user_name(user.getUser_name()).password(user.getPassword())
+						.date_of_birth(user.getDate_of_birth()).company(user.getCompany()).build()),
+				HttpStatus.OK);
 		return responseEntity;
 	}
-
 }

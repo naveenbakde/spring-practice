@@ -45,7 +45,6 @@
 	<build>
 		<finalName>spring-webapp</finalName>
 		<plugins>
-			<!-- Package as an executable jar/war -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
